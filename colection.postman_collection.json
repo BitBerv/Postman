@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "d7ea3e53-c952-44ee-a79d-e1dfb74cb2ca",
+		"name": "colection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "should get name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"request should return name\", () => {",
+							"    const name = pm.response.json().name;",
+							"    pm.expect(name).to.eql(\"The Octocat\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/users/octocat",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"users",
+						"octocat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "should have status code 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"request should have code 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/users/octocat",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"users",
+						"octocat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scholudnt be null login and id and id need to be a number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"login and id schuldnt be null\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.login).to.not.be.null;",
+							"    pm.expect(responseJson.id).to.not.be.null;",
+							"});",
+							"pm.test(\"id schould be a number\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/users/octocat",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"users",
+						"octocat"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
